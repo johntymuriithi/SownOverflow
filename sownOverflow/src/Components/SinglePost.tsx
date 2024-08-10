@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator'
 import AnswerModal from './AnswerModal'
 import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
+import EditAnswerModal from './EditAnswerModal'
 
 const SinglePost = () => {
   return (
@@ -64,6 +65,7 @@ const SinglePost = () => {
                 <button className='border border-indigo-600 rounded md:p-2 px-1 bg-indigo-300'>
                     <BiSolidDownvote />
                 </button>
+                <EditAnswerModal />
             </div>
             <div className='md:p-2 px-1 md:mt-3 mt-1'>
                 <p className='border border-t-indigo-700 border-b-indigo-700 transition ease-in'>2</p>
