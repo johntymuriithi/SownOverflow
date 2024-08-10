@@ -15,6 +15,8 @@ import MainCateporyPage from "../Features/Categories/MainCateporyPage"
 import PersonalNav from "../Features/PersonalNav/PersonalNav"
 import StatsPage from '../Features/Stats/StatsPage';
 import { BsMenuAppFill } from "react-icons/bs"
+import SigninButton from "./SigninButton"
+import SignupButton from "./SignupButton"
 
 export function ResponsiveNav() {
   return (
@@ -27,7 +29,11 @@ export function ResponsiveNav() {
         </SheetHeader>
         <div className="">
             <div className="mt-6"><MainCateporyPage /></div>
-            <div className="mt-6"><PersonalNav /></div>
+            {/* <div className="mt-6"><PersonalNav /></div> */}
+            <div className="mt-6 flex flex-col items-center gap-2">
+              <SigninButton />
+              <SignupButton />
+            </div>
             <div className="mt-6"><StatsPage /></div>
         </div>
         <SheetFooter>

@@ -1,16 +1,13 @@
-import { Fragment } from 'react'
-import NavBar from './Components/NavBar'
-import HomePage from './Components/HomePage'
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routers/Routers'; // Importing your Routes component
 
 const App = () => {
   return (
-    <Fragment>
-      <section>
-        <NavBar  />
-        <HomePage />
-      </section>
-    </Fragment>
-  )
-}
+    <Router>
+      <Routes />
+    </Router>
+  );
+};
 
-export default App
+export default App;
