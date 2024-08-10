@@ -30,11 +30,11 @@ const HomePage = () => {
                     </section>
                     <section className='mt-4'>
                         {/* <QuestionPage /> */}
-                        {/* <SinglePost /> */}
+                        <SinglePost />
+                        {/* <SinglePostLayout />
                         <SinglePostLayout />
                         <SinglePostLayout />
-                        <SinglePostLayout />
-                        <SinglePostLayout />
+                        <SinglePostLayout /> */}
                         {/* each post as a section here */}
                     </section>
                 </main>

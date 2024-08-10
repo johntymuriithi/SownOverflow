@@ -5,6 +5,9 @@ import { GiConversation } from 'react-icons/gi'
 import { LiaEye } from 'react-icons/lia'
 import SingleAnswer from './SingleAnswer'
 import { Separator } from '@/components/ui/separator'
+import AnswerModal from './AnswerModal'
+import { BiSolidUpvote } from "react-icons/bi";
+import { BiSolidDownvote } from "react-icons/bi";
 
 const SinglePost = () => {
   return (
@@ -52,6 +55,20 @@ const SinglePost = () => {
                 </p>
             </div>
             <hr className='border border-green-300 mt-7'/>
+            <div className='flex items-center justify-between'>
+            <div className='md:mt-3 mt-1 flex gap-2'>
+                <AnswerModal />
+                <button className='border border-indigo-600 rounded md:p-2 px-1 bg-indigo-300'>
+                    <BiSolidUpvote />
+                </button>
+                <button className='border border-indigo-600 rounded md:p-2 px-1 bg-indigo-300'>
+                    <BiSolidDownvote />
+                </button>
+            </div>
+            <div className='md:p-2 px-1 md:mt-3 mt-1'>
+                <p className='border border-t-indigo-700 border-b-indigo-700 transition ease-in'>2</p>
+            </div>
+            </div>
             <hr className='border border-green-300 mt-3'/>
 
             <div className='mt-3'>
