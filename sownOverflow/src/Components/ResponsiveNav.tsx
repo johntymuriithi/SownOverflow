@@ -11,9 +11,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import MainCateporyPage from "./MainCateporyPage"
-import PersonalNav from "./PersonalNav"
-import StatsPage from './StatsPage';
+import MainCateporyPage from "../Features/Categories/MainCateporyPage"
+import PersonalNav from "../Features/PersonalNav/PersonalNav"
+import StatsPage from '../Features/Stats/StatsPage';
 import { BsMenuAppFill } from "react-icons/bs"
 
 export function ResponsiveNav() {

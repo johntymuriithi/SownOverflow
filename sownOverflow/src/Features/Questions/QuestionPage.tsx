@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
-import TitleSection from './TitleSection'
-import CategorySection from './CategorySection'
-import HintModal  from './HintModal'
+import TitleSection from '../../Components/TitleSection'
+import CategorySection from '../../Components/CategorySection'
+import HintModal  from '../../Components/HintModal'
 import QuestionArea from './QuestionArea'
 import { PiPersonSimpleThrowBold } from "react-icons/pi";
-import { SuccessToast } from './SuccessToast'
+import { SuccessToast } from '../../Components/SuccessToast'
 
 const QuestionPage = () => {
   return (

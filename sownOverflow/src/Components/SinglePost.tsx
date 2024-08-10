@@ -5,10 +5,10 @@ import { GiConversation } from 'react-icons/gi'
 import { LiaEye } from 'react-icons/lia'
 import SingleAnswer from './SingleAnswer'
 import { Separator } from '@/components/ui/separator'
-import AnswerModal from './AnswerModal'
+import AnswerModal from '../Features/Answers/AnswerModal'
 import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
-import EditAnswerModal from './EditAnswerModal'
+import EditAnswerModal from '../Features/EditQuestions/EditAnswerModal'
 
 const SinglePost = () => {
   return (
