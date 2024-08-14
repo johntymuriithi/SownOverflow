@@ -3,12 +3,12 @@ import { BiUpvote } from 'react-icons/bi'
 import { FaUserTie } from 'react-icons/fa'
 import { GiConversation } from 'react-icons/gi'
 import { LiaEye } from 'react-icons/lia'
-import SingleAnswer from './SingleAnswer'
+import SingleAnswer from '../EditAnswers/SingleAnswer'
 import { Separator } from '@/components/ui/separator'
-import AnswerModal from '../Features/Answers/AnswerModal'
+import AnswerModal from '../Answers/AnswerModal'
 import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
-import EditAnswerModal from '../Features/EditQuestions/EditAnswerModal'
+import EditAnswerModal from './EditAnswerModal'
 
 const SinglePost = () => {
   return (

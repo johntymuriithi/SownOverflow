@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { FaUserTie } from 'react-icons/fa'
 import { AiFillLike } from "react-icons/ai";
-import EditModal from '../Features/EditAnswers/EditModal';
+import EditModal from './EditModal';
 
 const SingleAnswer = () => {
   return (

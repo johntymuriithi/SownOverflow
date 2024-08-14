@@ -7,8 +7,8 @@ import PersonalNav from '../Features/PersonalNav/PersonalNav'
 import QuestionPage from '../Features/Questions/QuestionPage'
 import StatsPage from '../Features/Stats/StatsPage'
 import MainCateporyPage from '../Features/Categories/MainCateporyPage'
-import SinglePost from './SinglePost'
-import SinglePostLayout from './SinglePostLayout'
+import SinglePost from '../Features/Questions/SinglePost'
+import SinglePostLayout from '../Features/Questions/SinglePostLayout'
 
 const HomePage = () => {
   return (
