@@ -19,6 +19,7 @@ const data: Data = { email: "mwangijohnmuriithi@gmail.com", pass: '1234' };
 const initialState: {
     user: User;
     status: 'idle' | 'pending' | 'succeeded' | 'failed';
+    isActive: boolean
     error: string | null;
 } = {
     user: {
@@ -26,6 +27,7 @@ const initialState: {
         email: 'muriithijohn@gmial.com',
         token: 'knmfkdnvkdfnlvjnjvndkvng',
     },
+    isActive: false,
     status: 'idle',
     error: null,
 };
