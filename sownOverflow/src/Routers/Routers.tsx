@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes as Switch, Route } from 'react-router-dom';
-import LoginSignUp from '@/Features/Logins/LoginSignUp';
+import LoginSignUp from '@/Features/Users/LoginSignUp';
 import Entry from '@/App/Entry';
 
 const Routes = () => (

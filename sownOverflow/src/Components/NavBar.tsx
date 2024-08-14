@@ -3,13 +3,14 @@ import SigninButton from './SigninButton'
 import SignupButton from './SignupButton'
 import sownPng  from '../Assets/Images/sown.png'
 import { Separator } from "@/components/ui/separator"
-import { BsMenuAppFill } from "react-icons/bs";
-import QuestionButton from './QuestionButton'
+// import { BsMenuAppFill } from "react-icons/bs";
+// import QuestionButton from './QuestionButton'
 import { ResponsiveNav } from './ResponsiveNav'
-
-
+import { useAppSelector } from '@/Types/hooksTypes'
+import { getUserInfo } from '@/Features/Users/usersSlice'
 
 const NavBar = () => {
+  console.log(useAppSelector(getUserInfo).username)
   return (
    <Fragment>
     <header className='w-full fixed p-5 top-0 md:sticky bg-indigo-200 shadow-lg shadow-indigo-400 z-30'>

@@ -9,8 +9,11 @@ import AnswerModal from '../Answers/AnswerModal'
 import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
 import EditAnswerModal from './EditAnswerModal'
+import { useAppSelector } from '@/Types/hooksTypes'
+import { getUserInfo } from '../Users/usersSlice'
 
 const SinglePost = () => {
+    console.log(useAppSelector(getUserInfo))
   return (
     <Fragment>
         <div className='min-h-[600px] bg-slate-200 rounded-lg p-3'>

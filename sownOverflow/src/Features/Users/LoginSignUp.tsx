@@ -5,6 +5,8 @@ export default function LoginSignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [userType, setUserType] = useState('farmer');
+  
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -13,7 +15,7 @@ export default function LoginSignUp() {
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
-
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
