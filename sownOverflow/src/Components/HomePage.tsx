@@ -9,8 +9,11 @@ import StatsPage from '../Features/Stats/StatsPage'
 import MainCateporyPage from '../Features/Categories/MainCateporyPage'
 import SinglePost from '../Features/Questions/SinglePost'
 import SinglePostLayout from '../Features/Questions/SinglePostLayout'
+import { useAppSelector } from '@/Types/hooksTypes'
+import { getUserInfo } from '@/Features/Users/usersSlice'
 
 const HomePage = () => {
+    const isActive = useAppSelector(getUserInfo).isActive
   return (
     <Fragment>
         <div className='mt-[70px] md:mt-[50px] w-full mx-auto lg:flex p-5 md:flex gap-8 '>
@@ -18,9 +21,10 @@ const HomePage = () => {
                 <MainCateporyPage />
                 {/* <Separator  className='bg-indigo-800 h-8' orientation='vertical'/> */}
                 {/* <Separator  className='bg-indigo-800 h-8 float-right relative' orientation='vertical'/> */}
+                {isActive ? "" :
                 <div className='md:mt-12'>
-                    {/* <PersonalNav /> */}
-                </div>
+                 <PersonalNav />
+                </div>}
             </div>
             <div className='flex-[70%]'>
                 <main>

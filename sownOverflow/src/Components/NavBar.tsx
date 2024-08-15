@@ -8,9 +8,11 @@ import { Separator } from "@/components/ui/separator"
 import { ResponsiveNav } from './ResponsiveNav'
 import { useAppSelector } from '@/Types/hooksTypes'
 import { getUserInfo } from '@/Features/Users/usersSlice'
+import QuestionButton from './QuestionButton'
 
 const NavBar = () => {
-  console.log(useAppSelector(getUserInfo).username)
+  const isActive = useAppSelector(getUserInfo).isActive;
+
   return (
    <Fragment>
     <header className='w-full fixed p-5 top-0 md:sticky bg-indigo-200 shadow-lg shadow-indigo-400 z-30'>
@@ -29,10 +31,12 @@ const NavBar = () => {
           </div>
         </div>
         <div className='flex items-center gap-2'>
+          {isActive ? "" : <QuestionButton />}
           {/* <QuestionButton /> */}
           <div className='text-2xl text-indigo-950 md:hidden'><ResponsiveNav/></div>
-          <div className='hidden md:block'><SigninButton /></div>
-         <div className='hidden md:block'><SignupButton /></div>
+          {isActive ?  <div className='hidden md:block'><SigninButton /></div> : ""}
+          {isActive ? <div className='hidden md:block'><SignupButton /></div> : ""}
+      
         </div>
       </nav>
     </header>

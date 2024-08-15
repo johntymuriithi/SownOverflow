@@ -1,8 +1,16 @@
 import { Separator } from '@/components/ui/separator'
+import { useAppDispatch } from '@/Types/hooksTypes';
 import React, { Fragment } from 'react'
 import { VscSignOut } from "react-icons/vsc";
+import { logOut } from '../Users/usersSlice';
 
 const PersonalNav = () => {
+  const dispatch = useAppDispatch()
+
+  const handleLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    dispatch(logOut())
+  }
   return (
     <Fragment>
         <div className='block bg-slate-400 min-h-[200px] rounded-lg p-3'>
@@ -20,7 +28,9 @@ const PersonalNav = () => {
             <Separator  className='bg-slate-200 mt-2'/>
             <div>
           <button className='bg-indigo-800 flex justify-center gap-1 items-center mt-3 py-2 rounded-lg text-slate-100 
-            font-semibold hover:bg-indigo-700 w-full'>
+            font-semibold hover:bg-indigo-700 w-full'
+            onClick={handleLogOut}
+            >
                <VscSignOut />
                 Sign Out</button>
         </div>

@@ -17,8 +17,14 @@ import StatsPage from '../Features/Stats/StatsPage';
 import { BsMenuAppFill } from "react-icons/bs"
 import SigninButton from "./SigninButton"
 import SignupButton from "./SignupButton"
+import { useAppSelector } from "@/Types/hooksTypes"
+import { getUserInfo } from "@/Features/Users/usersSlice"
+import QuestionButton from "./QuestionButton"
 
 export function ResponsiveNav() {
+  const userInfo  = useAppSelector(getUserInfo)
+    const isActive = userInfo.isActive;
+    
   return (
     <Sheet key="left">
       <SheetTrigger asChild>
@@ -29,11 +35,14 @@ export function ResponsiveNav() {
         </SheetHeader>
         <div className="">
             <div className="mt-6"><MainCateporyPage /></div>
-            {/* <div className="mt-6"><PersonalNav /></div> */}
+            {isActive ? "" : <div className="mt-6 flex justify-center"><QuestionButton /></div>}
+            {isActive ? "" : <div className="mt-6"><PersonalNav /></div>}
+            {isActive ?
             <div className="mt-6 flex flex-col items-center gap-2">
-              <SigninButton />
+             <SigninButton />
               <SignupButton />
-            </div>
+            </div> : ""
+          }
             <div className="mt-6"><StatsPage /></div>
         </div>
         <SheetFooter>
