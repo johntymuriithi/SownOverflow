@@ -6,9 +6,11 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { LiaUserSecretSolid } from "react-icons/lia";
 import { getUserInfo } from '../Users/usersSlice';
 import { useAppSelector } from '@/Types/hooksTypes';
+import { getInfoSite } from './statsSlice';
 
 const StatsPage = () => {
     const userInfo  = useAppSelector(getUserInfo)
+    const siteInfo  = useAppSelector(getInfoSite)
     const isActive = userInfo.isActive;
     
   return (
@@ -29,7 +31,7 @@ const StatsPage = () => {
             </div>
             }
             <div className='bg-slate-400 rounded-xl p-3 text-sm font-serif lg:mt-8 mt-2'>
-                <h1>Site Info: <span className='font-semibold font-serif'>46</span> Posts and <span className='font-semibold font-serif'>7 </span>active Users</h1>
+                <h1>Site Info: <span className='font-semibold font-serif'>{siteInfo.questions}</span> Questions and <span className='font-semibold font-serif'>{siteInfo.users} </span>active Users</h1>
             </div>
             <Separator className="text-slate-50 border mt-8"/>
             <div className='md:mt-10 font-sans italic'>

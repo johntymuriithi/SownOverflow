@@ -5,7 +5,7 @@ import HomePage from '@/Components/HomePage'
 const Entry = () => {
   return (
     <Fragment>
-        <NavBar />
+       
         <HomePage />
     </Fragment>
   )

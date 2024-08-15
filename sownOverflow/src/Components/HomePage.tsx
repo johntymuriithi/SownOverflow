@@ -11,11 +11,13 @@ import SinglePost from '../Features/Questions/SinglePost'
 import SinglePostLayout from '../Features/Questions/SinglePostLayout'
 import { useAppSelector } from '@/Types/hooksTypes'
 import { getUserInfo } from '@/Features/Users/usersSlice'
+import NavBar from './NavBar'
 
 const HomePage = () => {
     const isActive = useAppSelector(getUserInfo).isActive
   return (
     <Fragment>
+        <NavBar />
         <div className='mt-[70px] md:mt-[50px] w-full mx-auto lg:flex p-5 md:flex gap-8 '>
             <div className='flex-[30%] hidden md:block'>
                 <MainCateporyPage />
