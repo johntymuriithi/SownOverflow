@@ -1,6 +1,17 @@
 interface User {
+    id: number,
     username: string,
     level: string
+}
+interface Answer {
+    id: number,
+    content: string,
+    votes: number,
+    dataAnswered: string,
+    user: User
+}
+export interface AnswerProps {
+    answers: Answer[]
 }
 
 export interface Question {
@@ -8,7 +19,8 @@ export interface Question {
     title: string,
     content: string,
     dateAsked: string,
-    user: User
+    user: User,
+    answers: Answer[]
 }
 
 export interface Questions {

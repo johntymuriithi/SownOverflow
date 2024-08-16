@@ -9,13 +9,13 @@ const Filters = () => {
     <Fragment>
       <div className='flex md:gap-3 gap-1'>
         <button className='flex items-center bg-indigo-200 px-1 h-[36px]  md:px-2 md:py-2 border border-indigo-500
-        rounded-lg gap-1 md:gap-2 text-indigo-800 font-normal text-xs md:text-sm hover:text-slate-100
-         hover:bg-indigo-500 transition-all ease-in'>
+        rounded-lg gap-1 md:gap-2 text-indigo-800 font-normal text-xs md:text-sm
+         hover:bg-indigo-300 transition-all ease-in' disabled>
           <div><MdMenuBook /></div>
           FEATURED
         </button>
         
-        <button className='flex items-center bg-indigo-200 px-1 h-[36px]  md:px-2 md:py-2 border border-indigo-500
+        {/* <button className='flex items-center bg-indigo-200 px-1 h-[36px]  md:px-2 md:py-2 border border-indigo-500
         rounded-lg gap-1 md:gap-2 text-indigo-800 font-normal text-xs md:text-sm hover:text-slate-100
          hover:bg-indigo-500 transition-all ease-in'>
           <div><RiChatNewFill /></div>
@@ -27,7 +27,7 @@ const Filters = () => {
          hover:bg-indigo-500 transition-all ease-in'>
           <div><MdFavorite /></div>
           FAVOURITE
-        </button>
+        </button> */}
       </div>
     </Fragment>
   )

@@ -18,8 +18,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { useAppSelector } from "@/Types/hooksTypes"
+import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
 import { getCategories } from "./categoriesSlice"
+import { fetchByCategory } from "../Questions/questionsSlice"
 
 // const frameworks = [
 //   {
@@ -47,9 +48,18 @@ import { getCategories } from "./categoriesSlice"
 export function CategoryTags() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-
+  const [preValue, setPreValue] = React.useState<string>("")
+  const dispatch = useAppDispatch()
   const frameworks = useAppSelector(getCategories).categories
-  console.log(frameworks)
+  
+  if (value !== "") {
+    if ((value === preValue) !== true) {
+      setPreValue(value)
+      dispatch(fetchByCategory(value))
+
+    }
+  }
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

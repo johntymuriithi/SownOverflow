@@ -1,16 +1,22 @@
+import { ControlProps } from '@/Types/answersTypes'
 import { Editor } from '@tinymce/tinymce-react'
 import React, { Fragment, useState } from 'react'
 
-const EditPage = ({ editValue }) => {
-    const [value, setValue] = useState<string>("")
-    const [text, setText] = useState<string>("")
+interface Props {
+    controlProps: ControlProps
+}
+
+const EditPage: React.FC<Props>= ({ controlProps }) => {
+    const value = controlProps.value.value
+    const setValue = controlProps.value.setValue
+    const setText = controlProps.text.setText
+//     const [value, setValue] = useState<string>("")
+//     const [text, setText] = useState<string>("")
 
     const onEditorInputChange = (newValue: string, editor) => {
         setValue(newValue);
        setText(editor.getContent({ format: "text" }));
    }
-
-   console.log(value, text)
   return (
     <Fragment>
         <div>
@@ -19,7 +25,7 @@ const EditPage = ({ editValue }) => {
             onEditorChange={(newValue, editor) => onEditorInputChange(newValue, editor)}
             onInit={(evt, editor) => setText(editor.getContent({ format: "text" }))}
             value={value}
-            initialValue={editValue}
+            initialValue={controlProps.content}
         />
         </div>
     </Fragment>

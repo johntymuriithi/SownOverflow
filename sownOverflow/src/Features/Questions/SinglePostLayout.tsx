@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 const SinglePostLayout = () => {
     // const dispatch = useAppDispatch()
     const data = useAppSelector(getAllQuestions)
-    console.log(data);
   return (
     <Fragment>
         {data.map((question) => (

@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <Fragment>
         <NavBar />
-        <div className='mt-[70px] md:mt-[50px] w-full mx-auto lg:flex p-5 md:flex gap-8 '>
+        <div className='mt-[70px] md:mt-[50px] w-full mx-auto lg:flex p-5 md:flex gap-8 md:min-h-[80vh] min-h-[90vh]'>
             <div className='flex-[30%] hidden md:block'>
                 <MainCateporyPage />
                 {/* <Separator  className='bg-indigo-800 h-8' orientation='vertical'/> */}

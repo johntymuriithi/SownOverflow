@@ -6,7 +6,7 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-import EditPage from "../EditAnswers/EditPage"
+import EditPage from "../Answers/EditPage"
 import { PiPersonSimpleThrowBold } from "react-icons/pi"
   
   const  EditAnswerModal = () => {

@@ -1,0 +1,76 @@
+{
+    "status": 200,
+    "message": "Questions retrieved successfully",
+    "questions": [
+        {
+            "id": 1,
+            "title": "The Impact of Cybercrime on Small Businesses",
+            "content": "Testing Testing",
+            "votes": 0,
+            "dateAsked": "2 months ago",
+            "user": {
+                "username": "John mwangi",
+                "level": "expert"
+            },
+            "answers": [
+                {
+                    "id": 1,
+                    "content": "You test till you start over testing only for you to deploy then boom, an unaccounted issue arises.",
+                    "votes": 0,
+                    "dateAnswered": "2 months",
+                    "user": {
+                        "username": "John mwangi",
+                        "level": "expert"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "The Impact of Cybercrime on Small Businesses",
+            "content": "Testing 2",
+            "votes": 0,
+            "dateAsked": "2 months ago",
+            "user": {
+                "username": "John mwangi",
+                "level": "expert"
+            },
+            "answers": []
+        },
+        {
+            "id": 3,
+            "title": "My Cows are vomiting",
+            "content": "Cows crucial for the survival and growth of small businesses in the digital age.",
+            "votes": 0,
+            "dateAsked": "1 months ago",
+            "user": {
+                "username": "John mwangi",
+                "level": "expert"
+            },
+            "answers": []
+        },
+        {
+            "id": 4,
+            "title": "My Cows are vomiting",
+            "content": "Cows crucial for the survival and growth of small businesses in the digital age.",
+            "votes": 0,
+            "dateAsked": "1 months ago",
+            "user": {
+                "username": "Peter Muriithi",
+                "level": "farmer"
+            },
+            "answers": []
+        }
+    ],
+    "pagination": {
+        "currentPage": 1,
+        "totalPages": 1,
+        "totalCount": 4,
+        "pageSize": 4
+    }
+}
+
+http://localhost:8080/show/questions/byCategory?categoryname=Cow Diseases
+http://localhost:8080/answer/edit
+http://localhost:8080/post/answer
+http://localhost:8080/answer/delete

@@ -32,9 +32,8 @@ export default function LoginSignUp() {
    try {
     setPostStatus('pending')
     await dispatch(loginUser({email, password})).unwrap()
-    console.log(postStatus)
     navigate('/')
-    e.currentTarget.reset()
+    e.currentTarget.reset() // this is now working please check it out
 
    } catch (err) {
     console.log(err) // for now only
@@ -60,7 +59,6 @@ export default function LoginSignUp() {
     e.currentTarget.reset()
 
    } catch (err) {
-    console.log(err) // for now only
     setPostStatus('failed')
    } finally {
     setPostStatus('idles')

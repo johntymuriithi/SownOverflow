@@ -6,22 +6,21 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-// import EditPage from "./EditPage"
+import EditPage from "./EditPage"
 import { PiPersonSimpleThrowBold } from "react-icons/pi"
-import AnswerPage from "./AnswerPage"
-// import { Editor } from '@tinymce/tinymce-react'
-import React, { useState } from 'react'
 import { AnswerModalProps } from "@/Types/answersTypes"
 import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
+import { useNavigate} from "react-router-dom"
+import { useState } from "react"
 import { getUserInfo } from "../Users/usersSlice"
-import { postAnswer } from "../Questions/questionsSlice"
-import { useNavigate } from "react-router-dom"
-  
+import { editAnswer } from "../Questions/questionsSlice"
 
 interface Props {
-  questionInfo: AnswerModalProps
+  answerInfo: AnswerModalProps
 }
-  const  AnswerModal: React.FC<Props> = (questionInfo) => {
+  
+  const  EditModal: React.FC<Props> = ({answerInfo}) => {
+
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const userInfo = useAppSelector(getUserInfo)
@@ -33,16 +32,17 @@ interface Props {
    const controlProps = {
     value: { value: value, setValue: setValue},
     text: {text: text, setText: setText},
+    content: answerInfo.content
   }
 
    const handlePost = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const data = {token: token!, q_id: questionInfo.questionInfo.id, a_description: text, a_date: "1 day Ago"}
+    const data = {token: token!, id: answerInfo.id, a_description: text}
 
     try {
-      await dispatch(postAnswer(data)).unwrap()
-      alert("Answer Submitted, Go Home and Refresh, then comeback")
+      await dispatch(editAnswer(data)).unwrap()
+      alert("Answer Edited, Go Home and Refresh, then comeback")
       navigate('/')
     } catch(err) {
       console.log(err)
@@ -51,24 +51,24 @@ interface Props {
     return (
       <Dialog>
         <DialogTrigger asChild>
-        <button className='border border-indigo-400 rounded md:p-2 px-1'>Answer</button>
+        <button className='border border-indigo-400 rounded'>Edit</button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px] bg-slate-200">
           <DialogHeader>
             <DialogTitle>
                 <h1>
-                    Answering Question:
-                    <span className="font-serif text-sm">  {questionInfo.questionInfo.content}</span>
+                    Editing Answer:
+                    <span className="font-serif text-sm"> Interesting. Are there other...</span>
                 </h1>
             </DialogTitle>
           </DialogHeader>
-          <AnswerPage controlProps={controlProps}/>
+          <EditPage controlProps={controlProps}/>
           <DialogFooter>
                 <button className='bg-indigo-800 flex justify-center items-center 
                         px-7 py-2 rounded-lg text-slate-100 font-semibold hover:bg-indigo-700 w-full mt-3 gap-1'
                         onClick={handlePost}>
                     <PiPersonSimpleThrowBold />
-                    Post Answer
+                    Edit Answer
                 </button>
           </DialogFooter>
         </DialogContent>
@@ -76,4 +76,4 @@ interface Props {
     )
   }
   
-  export default AnswerModal
+  export default EditModal
