@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { CategoryTags } from './CategoryTags'
+import { CategoryTags } from '../Features/Categories/CategoryTags'
 
 const CategorySection = () => {
   return (

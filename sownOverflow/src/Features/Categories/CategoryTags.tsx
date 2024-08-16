@@ -18,34 +18,38 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { useAppSelector } from "@/Types/hooksTypes"
+import { getCategories } from "./categoriesSlice"
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+// const frameworks = [
+//   {
+//     value: "next.js",
+//     label: "Next.js",
+//   },
+//   {
+//     value: "sveltekit",
+//     label: "SvelteKit",
+//   },
+//   {
+//     value: "nuxt.js",
+//     label: "Nuxt.js",
+//   },
+//   {
+//     value: "remix",
+//     label: "Remix",
+//   },
+//   {
+//     value: "astro",
+//     label: "Astro",
+//   },
+// ]
 
 export function CategoryTags() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
+  const frameworks = useAppSelector(getCategories).categories
+  console.log(frameworks)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -56,21 +60,21 @@ export function CategoryTags() {
           className="md:w-[200px] w-[170px] justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select Tag..."}
+            ? frameworks.find((framework) => framework.category_name === value)?.category_label
+            : "Select Category..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search Tag..." />
+          <CommandInput placeholder="Search Category..." />
           <CommandList>
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup>
               {frameworks.map((framework) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
+                  key={framework.category_id}
+                  value={framework.category_name!}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue)
                     setOpen(false)
@@ -79,10 +83,10 @@ export function CategoryTags() {
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0"
+                      value === framework.category_name ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {framework.label}
+                  {framework.category_label}
                 </CommandItem>
               ))}
             </CommandGroup>
