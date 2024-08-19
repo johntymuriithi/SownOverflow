@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "@/Types/hooksTypes";
 import { RootState } from "@/Store/store";
-import { AnswerPost, Question, Questions } from '../../Types/questionsTypes';
+import { AnswerPost, EditQuestion, Question, Questions } from '../../Types/questionsTypes';
 import { Answer, DeleteAnswer, EditAnswer } from "@/Types/answersTypes";
 
 // Define the initial state with the correct typing
@@ -158,6 +158,36 @@ export const postQuestion = createAppAsyncThunk(
         };
         try {
             const response = await fetch('http://localhost:5173/api/post/question', {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(rest),
+            });
+
+            if (!response.ok) {
+                // If the response status is not ok, throw an error with the status text
+                throw new Error(response.statusText);
+            }
+
+            // Parse and return the JSON response
+            return await response.json();
+        } catch (error) {
+            // Use rejectWithValue to pass a custom error message to the action's rejected case
+            return rejectWithValue((error as Error).message);
+        }
+    }
+);
+
+export const editQuestion= createAppAsyncThunk(
+    'question/editQuestion', 
+    async (data: EditQuestion, { rejectWithValue }) => {
+        const { token, ...rest } = data;
+        const headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        };
+        try {
+            const response = await fetch('http://localhost:5173/api/question/edit', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(rest),

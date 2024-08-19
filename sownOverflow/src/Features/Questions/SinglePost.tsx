@@ -144,7 +144,7 @@ const SinglePost = () => {
                     <button className='border border-indigo-600 rounded md:p-2 px-1 bg-indigo-300'>
                         <BiSolidDownvote />
                     </button>
-                    {data.user.id === userInfo.user?.id ? <EditAnswerModal /> : ""}
+                    {data.user.id === userInfo.user?.id ? <EditAnswerModal questionInfo={{id: data.id, content: data.content}}/> : ""}
                 </div>
                 <div className='md:p-2 px-1 md:mt-3 mt-1'>
                     <p className='border border-t-indigo-700 border-b-indigo-700 transition ease-in'>2</p>

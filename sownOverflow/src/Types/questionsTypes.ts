@@ -45,3 +45,14 @@ interface Value {
 export interface ControlProps1 {
     value: Value
 }
+
+export interface QuestionModalProps {
+    id: number,
+    content: string
+}
+
+export interface EditQuestion {
+    token: string
+    id: number,
+    q_description: string,
+}
