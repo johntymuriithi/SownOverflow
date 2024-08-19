@@ -7,14 +7,15 @@ import AnswerModal from '../Answers/AnswerModal'
 import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
 import EditAnswerModal from './EditAnswerModal'
-import { useAppSelector } from '@/Types/hooksTypes'
-import { getQuestionById,} from './questionsSlice'
+import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes'
+import { fetchByCategory, getQuestionById,} from './questionsSlice'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../Users/usersSlice'
 import { getCategories } from '../Categories/categoriesSlice'
 
 const SinglePostMain = () => {
     const { id } = useParams();
+    const dispatch = useAppDispatch()
     const data = useAppSelector(state => getQuestionById(state, Number(id)!))
     const userInfo = useAppSelector(getUserInfo)
     const answers = data?.answers // not sure of its effects
@@ -24,6 +25,10 @@ const SinglePostMain = () => {
     const handleCategory = (id: number): string => {
         const category = categories.find(category => category.category_id === id)
         return category?.category_name || "";
+    }
+
+    const handlePost = (value: string) => {
+        dispatch(fetchByCategory(value))
     }
        
     if (!data) {
@@ -57,7 +62,8 @@ const SinglePostMain = () => {
                             <div className='flex items-center'><BiUpvote /><span>2</span></div>
                      </div>
                     <div>
-                        <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>{handleCategory(data.category_id)}</button>
+                        <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'
+                        onClick={() => {handlePost(handleCategory(data.category_id))}}>{handleCategory(data.category_id)}</button>
                     </div>
                     </div>
                 </div>
@@ -122,7 +128,8 @@ const SinglePostMain = () => {
                           <div className='flex items-center'><GiConversation /><span>{data.answers.length}</span></div>
                    </div>
                   <div>
-                      <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>{handleCategory(data.category_id)}</button>
+                      <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'
+                      onClick={() => {handlePost(handleCategory(data.category_id))}}>{handleCategory(data.category_id)}</button>
                   </div>
                   </div>
               </div>

@@ -1,14 +1,13 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { FaUserTie } from "react-icons/fa";
 import { GiConversation } from "react-icons/gi";
-import { useAppSelector } from '@/Types/hooksTypes';
-import { getAllQuestions } from './questionsSlice';
+import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
+import { fetchByCategory, getAllQuestions } from './questionsSlice';
 import { Link } from 'react-router-dom';
-import { CategoryGetter } from '@/Utils/CategoryName';
 import { getCategories } from '../Categories/categoriesSlice';
 
 const SinglePostLayout = () => {
-    // const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch()
     const data = useAppSelector(getAllQuestions)
     const categories = useAppSelector(getCategories).categories
 
@@ -17,6 +16,10 @@ const SinglePostLayout = () => {
         return category?.category_name || "";
     }
 
+    const handlePost = (value: string) => {
+
+        dispatch(fetchByCategory(value))
+    }
   return (
     <Fragment>
         {data.map((question) => (
@@ -38,7 +41,8 @@ const SinglePostLayout = () => {
             </div>
             <div className='flex md:mt-5 justify-between mt-2'>
                 <div>
-                    <button className='bg-indigo-400 px-4 py-2 rounded-lg md:text-sm text-xs'>{handleCategory(question.category_id)}</button>
+                    <button className='bg-indigo-400 px-4 py-2 rounded-lg md:text-sm text-xs' 
+                    onClick={() => {handlePost(handleCategory(question.category_id))}}>{handleCategory(question.category_id)}</button>
                 </div>
                 <div className='flex items-center gap-5 text-sm'>
                     <div className='flex items-center'><GiConversation /><span>{question.answers.length}</span></div>
