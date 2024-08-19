@@ -27,4 +27,21 @@ export interface Questions {
     questions: Question[];
     status: 'idle' | 'pending' | 'succeeded' | 'failed';
     error: string | null;
+    qStatus?: boolean | null
+}
+
+export interface AnswerPost {
+    token: string
+    category_id: number,
+    q_title: string,
+    q_description: string,
+    q_date: string
+}
+
+interface Value {
+    value1: string,
+    setValue1: React.Dispatch<React.SetStateAction<string>>;
+}
+export interface ControlProps1 {
+    value: Value
 }

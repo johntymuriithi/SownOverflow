@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 // import CategorySelector from './CategorySelector'
 import Filters from '../Features/Filters/Filters'
 // import SinglePostLayout from './SinglePostLayout'
@@ -12,9 +12,11 @@ import SinglePostLayout from '../Features/Questions/SinglePostLayout'
 import { useAppSelector } from '@/Types/hooksTypes'
 import { getUserInfo } from '@/Features/Users/usersSlice'
 import NavBar from './NavBar'
+import { getQuestionStatus } from '@/Features/Questions/questionsSlice'
 
 const HomePage = () => {
     const isActive = useAppSelector(getUserInfo).isActive
+    const status = useAppSelector(getQuestionStatus)
   return (
     <Fragment>
         <NavBar />
@@ -35,9 +37,8 @@ const HomePage = () => {
                         <Filters /> 
                     </section>
                     <section className='mt-4'>
-                        {/* <QuestionPage /> */}
-                        {/* <SinglePost /> */}
-                        <SinglePostLayout />
+                        {status ? <QuestionPage /> : <SinglePostLayout />}
+                        {/* <SinglePost />                    */}
                         {/* each post as a section here */}
                     </section>
                 </main>

@@ -1,16 +1,19 @@
 import { Editor } from '@tinymce/tinymce-react'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment} from 'react'
+import { ControlProps } from '../../Types/answersTypes';
 
-const QuestionArea = () => {
-    const [value, setValue] = useState<string>("")
-    const [text, setText] = useState<string>("")
+interface Props {
+    controlProps: ControlProps
+}
+const QuestionArea: React.FC<Props> = ({controlProps}) => {
+    const value = controlProps.value.value
+    const setValue = controlProps.value.setValue
+    const setText = controlProps.text.setText
 
     const onEditorInputChange = (newValue: string, editor) => {
         setValue(newValue);
        setText(editor.getContent({ format: "text" }));
    }
-
-   console.log(value, text)
   return (
     <Fragment>
         <div>

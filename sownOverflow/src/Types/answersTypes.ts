@@ -32,6 +32,6 @@ interface Text {
 export interface ControlProps {
     value: Value
     text: Text,
-    content: string
+    content?: string
     // onEditorInputChange: (newValue: string, editor: any) => void
 }

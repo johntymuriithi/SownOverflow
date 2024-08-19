@@ -70,7 +70,9 @@
     }
 }
 
-http://localhost:8080/show/questions/byCategory?categoryname=Cow Diseases
-http://localhost:8080/answer/edit
-http://localhost:8080/post/answer
-http://localhost:8080/answer/delete
+
+http://localhost:8080/question/edit
+{
+    "id": 2,
+    "q_description" : "Testing 2"
+}

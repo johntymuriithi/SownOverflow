@@ -14,11 +14,6 @@ const TitleSection = () => {
                 type='text'
                 placeholder='e.g Have you ever heard of copouts disease found in Cows' 
                 ></input >
-                <div className='mt-3'>
-                    <button className='bg-inherit flex justify-center items-center 
-                    px-3 py-1 rounded-lg text-indigo-800 font-semibold border
-                     border-indigo-800 hover:bg-indigo-300'>Done</button>
-                </div>
             </div>
         </div>
     </Fragment>

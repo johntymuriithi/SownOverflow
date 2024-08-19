@@ -18,48 +18,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
-import { getCategories } from "./categoriesSlice"
-import { fetchByCategory } from "../Questions/questionsSlice"
+import {useAppSelector } from "@/Types/hooksTypes"
+import { getCategories } from "../Categories/categoriesSlice"
+import { ControlProps1 } from "@/Types/questionsTypes"
 
-// const frameworks = [
-//   {
-//     value: "next.js",
-//     label: "Next.js",
-//   },
-//   {
-//     value: "sveltekit",
-//     label: "SvelteKit",
-//   },
-//   {
-//     value: "nuxt.js",
-//     label: "Nuxt.js",
-//   },
-//   {
-//     value: "remix",
-//     label: "Remix",
-//   },
-//   {
-//     value: "astro",
-//     label: "Astro",
-//   },
-// ]
-
-export function CategoryTags() {
+interface Props {
+  controlProps1: ControlProps1
+}
+export const QuestionsCategory: React.FC<Props> = ({controlProps1}) => {
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
-  const [preValue, setPreValue] = React.useState<string>("")
-  const dispatch = useAppDispatch()
+  const value = controlProps1.value.value1
+  const setValue = controlProps1.value.setValue1
   const frameworks = useAppSelector(getCategories).categories
-  console.log(frameworks)
-  
-  if (value !== "") {
-    if ((value === preValue) !== true) {
-      setPreValue(value)
-      dispatch(fetchByCategory(value))
-
-    }
-  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

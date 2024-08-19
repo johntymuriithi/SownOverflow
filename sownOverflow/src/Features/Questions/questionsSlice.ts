@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "@/Types/hooksTypes";
 import { RootState } from "@/Store/store";
-import { Question, Questions } from '../../Types/questionsTypes';
+import { AnswerPost, Question, Questions } from '../../Types/questionsTypes';
 import { Answer, DeleteAnswer, EditAnswer } from "@/Types/answersTypes";
 
 // Define the initial state with the correct typing
@@ -9,6 +9,7 @@ const initialState: Questions = {
     questions: [],
     status: 'idle',
     error: null,
+    qStatus: false
 };
 
 
@@ -146,10 +147,44 @@ export const deleteAnswer = createAppAsyncThunk(
     }
 );
 
+export const postQuestion = createAppAsyncThunk(
+    'question/postQuestion', 
+    async (data: AnswerPost, { rejectWithValue }) => {
+        const { token, ...rest } = data;
+        const headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        };
+        try {
+            const response = await fetch('http://localhost:5173/api/post/question', {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(rest),
+            });
+
+            if (!response.ok) {
+                // If the response status is not ok, throw an error with the status text
+                throw new Error(response.statusText);
+            }
+
+            // Parse and return the JSON response
+            return await response.json();
+        } catch (error) {
+            // Use rejectWithValue to pass a custom error message to the action's rejected case
+            return rejectWithValue((error as Error).message);
+        }
+    }
+);
+
 const questionsSlice = createSlice({
     name: 'question',
     initialState,
-    reducers: {},
+    reducers: {
+        modalController: (state) => {
+            {state.qStatus ? state.qStatus = false : state.qStatus = true}
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getQuestions.pending, (state) => {
@@ -179,8 +214,10 @@ const questionsSlice = createSlice({
 });
 
 export default questionsSlice.reducer;
+export const { modalController } = questionsSlice.actions;
 
 // Selector to get all questions from the state
 export const getAllQuestions = (state: RootState) => state.questions.questions;
+export const getQuestionStatus = (state: RootState) => state.questions.qStatus;
 export const getQuestionById = (state: RootState, id: number) => 
     state.questions.questions.find(question => question.id === id)

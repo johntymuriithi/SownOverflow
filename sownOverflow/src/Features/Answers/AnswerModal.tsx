@@ -6,10 +6,8 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-// import EditPage from "./EditPage"
 import { PiPersonSimpleThrowBold } from "react-icons/pi"
 import AnswerPage from "./AnswerPage"
-// import { Editor } from '@tinymce/tinymce-react'
 import React, { useState } from 'react'
 import { AnswerModalProps } from "@/Types/answersTypes"
 import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
