@@ -1,6 +1,5 @@
 import { Routes as Switch, Route } from 'react-router-dom';
 import LoginSignUp from '@/Features/Users/LoginSignUp';
-import Entry from '@/App/Entry';
 import SinglePost from '@/Features/Questions/SinglePost';
 import HomePage from '@/Components/HomePage';
 

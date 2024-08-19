@@ -21,6 +21,7 @@ export interface Question {
     dateAsked: string,
     user: User,
     answers: Answer[]
+    votes: number
 }
 
 export interface Questions {
