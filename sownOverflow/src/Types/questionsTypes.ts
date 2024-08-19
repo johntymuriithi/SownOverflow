@@ -19,6 +19,7 @@ export interface Question {
     title: string,
     content: string,
     dateAsked: string,
+    category_id: number,
     user: User,
     answers: Answer[]
     votes: number

@@ -11,7 +11,7 @@ import { useAppSelector } from '@/Types/hooksTypes'
 import { getQuestionById,} from './questionsSlice'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../Users/usersSlice'
-import { useCategoryGetter } from '@/Utils/CategoryName'
+import { getCategories } from '../Categories/categoriesSlice'
 
 const SinglePostMain = () => {
     const { id } = useParams();
@@ -19,7 +19,12 @@ const SinglePostMain = () => {
     const userInfo = useAppSelector(getUserInfo)
     const answers = data?.answers // not sure of its effects
     const count = answers ? answers.length : 0
+    const categories = useAppSelector(getCategories).categories
 
+    const handleCategory = (id: number): string => {
+        const category = categories.find(category => category.category_id === id)
+        return category?.category_name || "";
+    }
        
     if (!data) {
         return (
@@ -33,7 +38,7 @@ const SinglePostMain = () => {
         return (
             <Fragment>
             {
-                <div className='min-h-[600px] bg-slate-800 rounded-lg p-3'>
+                <div className='min-h-[600px] bg-slate-200 rounded-lg p-3'>
                 <div className='mb-4'>
                     <h1 className='font-bold md:text-xl'>{data.title}</h1>
                 </div>
@@ -52,7 +57,7 @@ const SinglePostMain = () => {
                             <div className='flex items-center'><BiUpvote /><span>2</span></div>
                      </div>
                     <div>
-                        <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>Coming Soon</button>
+                        <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>{handleCategory(data.category_id)}</button>
                     </div>
                     </div>
                 </div>
@@ -117,7 +122,7 @@ const SinglePostMain = () => {
                           <div className='flex items-center'><GiConversation /><span>{data.answers.length}</span></div>
                    </div>
                   <div>
-                      <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>Coming soon...</button>
+                      <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>{handleCategory(data.category_id)}</button>
                   </div>
                   </div>
               </div>
