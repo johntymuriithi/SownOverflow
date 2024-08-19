@@ -11,8 +11,9 @@ import { useAppSelector } from '@/Types/hooksTypes'
 import { getQuestionById,} from './questionsSlice'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../Users/usersSlice'
+import { useCategoryGetter } from '@/Utils/CategoryName'
 
-const SinglePost = () => {
+const SinglePostMain = () => {
     const { id } = useParams();
     const data = useAppSelector(state => getQuestionById(state, Number(id)!))
     const userInfo = useAppSelector(getUserInfo)
@@ -32,7 +33,7 @@ const SinglePost = () => {
         return (
             <Fragment>
             {
-                <div className='min-h-[600px] bg-slate-200 rounded-lg p-3'>
+                <div className='min-h-[600px] bg-slate-800 rounded-lg p-3'>
                 <div className='mb-4'>
                     <h1 className='font-bold md:text-xl'>{data.title}</h1>
                 </div>
@@ -51,7 +52,7 @@ const SinglePost = () => {
                             <div className='flex items-center'><BiUpvote /><span>2</span></div>
                      </div>
                     <div>
-                        <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>Programming</button>
+                        <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>Coming Soon</button>
                     </div>
                     </div>
                 </div>
@@ -98,7 +99,7 @@ const SinglePost = () => {
   return (
     <Fragment>
           {
-              <div className='min-h-[600px] bg-slate-200 rounded-lg p-3 md:p-20 md:w-[40%]'>
+              <div className='min-h-[654px] bg-slate-200 rounded-lg p-3 md:p-20 md:w-[60%] md:m-auto border border-slate-100'>
               <div className='mb-4'>
                   <h1 className='font-bold md:text-xl'>{data.title}</h1>
               </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
@@ -113,11 +114,10 @@ const SinglePost = () => {
                   </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                   <div className='flex items-center gap-2'>
                    <div className='flex items-center gap-5 text-sm'>
-                          <div className='flex items-center'><GiConversation /><span>0</span></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                          <div className='flex items-center'><BiUpvote /><span>2</span></div>
+                          <div className='flex items-center'><GiConversation /><span>{data.answers.length}</span></div>
                    </div>
                   <div>
-                      <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>Programming</button>
+                      <button className='bg-indigo-400 md:px-3 md:py-2 px-2 py-1 rounded-lg text-sm'>Coming soon...</button>
                   </div>
                   </div>
               </div>
@@ -135,12 +135,6 @@ const SinglePost = () => {
                 <div className='flex items-center justify-between'>
                 <div className='md:mt-3 mt-1 flex gap-2'>
                     <AnswerModal questionInfo={{id: data.id, content: data.content}}/>
-                    <button className='border border-indigo-600 rounded md:p-2 px-1 bg-indigo-300'>
-                        <BiSolidUpvote />
-                    </button>
-                    <button className='border border-indigo-600 rounded md:p-2 px-1 bg-indigo-300'>
-                        <BiSolidDownvote />
-                    </button>
                     {data.user.id === userInfo.user?.id ? <EditAnswerModal questionInfo={{id: data.id, content: data.content}}/> : ""}
                 </div>
                 <div className='md:p-2 px-1 md:mt-3 mt-1'>
@@ -163,4 +157,4 @@ const SinglePost = () => {
   )
 }
 
-export default SinglePost
+export default SinglePostMain

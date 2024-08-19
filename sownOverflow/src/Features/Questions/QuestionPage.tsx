@@ -14,7 +14,7 @@ const QuestionPage = () => {
     const navigate = useNavigate()
     const userInfo = useAppSelector(getUserInfo)
     const frameworks = useAppSelector(getCategories).categories
-    const token = userInfo.user?.token
+    const token = userInfo?.user?.token
 
     const [value, setValue] = useState<string>("")
     const [value1, setValue1] = useState<string>("")

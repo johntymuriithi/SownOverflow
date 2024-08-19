@@ -25,16 +25,10 @@ const statsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getSiteInfo.pending, (state) => {
-                // Optionally, you can handle the 'pending' state here (e.g., setting a loading flag)
-            })
             .addCase(getSiteInfo.fulfilled, (state, action: PayloadAction<Stats>) => {
                 return action.payload
                 // Update the state with the fetched data when the promise resolves
             })
-            .addCase(getSiteInfo.rejected, (state, action) => {
-                // Optionally, handle the 'rejected' state (e.g., setting an error message)
-            });
     },
 });
 

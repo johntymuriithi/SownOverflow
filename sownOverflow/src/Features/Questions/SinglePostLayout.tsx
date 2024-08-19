@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { FaUserTie } from "react-icons/fa";
 import { GiConversation } from "react-icons/gi";
-import { BiUpvote } from "react-icons/bi";
 import { useAppSelector } from '@/Types/hooksTypes';
 import { getAllQuestions } from './questionsSlice';
 import { Link } from 'react-router-dom';
@@ -30,7 +29,7 @@ const SinglePostLayout = () => {
             </div>
             <div className='flex md:mt-5 justify-between mt-2'>
                 <div>
-                    <button className='bg-indigo-400 px-4 py-2 rounded-lg md:text-sm text-xs'>Programming</button>
+                    <button className='bg-indigo-400 px-4 py-2 rounded-lg md:text-sm text-xs'>Coming soon...</button>
                 </div>
                 <div className='flex items-center gap-5 text-sm'>
                     <div className='flex items-center'><GiConversation /><span>{question.answers.length}</span></div>
