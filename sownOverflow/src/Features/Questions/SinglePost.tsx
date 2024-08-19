@@ -2,7 +2,6 @@ import { Fragment } from 'react'
 import { BiUpvote } from 'react-icons/bi'
 import { FaUserTie } from 'react-icons/fa'
 import { GiConversation } from 'react-icons/gi'
-import { LiaEye } from 'react-icons/lia'
 import SingleAnswer from '../Answers/SingleAnswer'
 import AnswerModal from '../Answers/AnswerModal'
 import { BiSolidUpvote } from "react-icons/bi";
@@ -48,7 +47,6 @@ const SinglePost = () => {
                     </div>
                     <div className='flex items-center gap-2'>
                      <div className='flex items-center gap-5 text-sm'>
-                            <div className='flex items-center'><LiaEye /><span>20</span></div>
                             <div className='flex items-center'><GiConversation /><span>0</span></div>
                             <div className='flex items-center'><BiUpvote /><span>2</span></div>
                      </div>
@@ -100,23 +98,22 @@ const SinglePost = () => {
   return (
     <Fragment>
           {
-              <div className='min-h-[600px] bg-slate-200 rounded-lg p-3'>
+              <div className='min-h-[600px] bg-slate-200 rounded-lg p-3 md:p-20 md:w-[40%]'>
               <div className='mb-4'>
                   <h1 className='font-bold md:text-xl'>{data.title}</h1>
-              </div>
+              </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
               <div className='md:flex justify-between items-center'>
                   <div className='flex items-center gap-2'>
                       <div>
                           <FaUserTie className='text-[30px]' />
-                      </div>
-                      <div>
+                      </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                      <div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
                           <h2 className='font-bold text-sm'>{data.user.username}</h2>
                       </div>
-                  </div>
+                  </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                   <div className='flex items-center gap-2'>
                    <div className='flex items-center gap-5 text-sm'>
-                          <div className='flex items-center'><LiaEye /><span>20</span></div>
-                          <div className='flex items-center'><GiConversation /><span>0</span></div>
+                          <div className='flex items-center'><GiConversation /><span>0</span></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                           <div className='flex items-center'><BiUpvote /><span>2</span></div>
                    </div>
                   <div>

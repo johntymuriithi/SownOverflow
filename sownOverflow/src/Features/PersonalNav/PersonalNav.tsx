@@ -4,13 +4,11 @@ import React, { Fragment, useState } from 'react'
 import { VscSignOut } from "react-icons/vsc";
 import { getUserInfo, logOut } from '../Users/usersSlice';
 import { fetchUserComments, fetchUserQuestions } from '../Questions/questionsSlice';
-import { useNavigate } from 'react-router-dom';
 
-const PersonalNav = () => {
+export const PersonalNav = () => {
   const [valueComment, setValueComment] = useState<boolean>(false)
   const [valueQuestion, setValueQuestion] = useState<boolean>(false)
   const dispatch = useAppDispatch()
-  const navigate = useNavigate()
   const userInfo = useAppSelector(getUserInfo)
 
   const handleLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,6 +33,7 @@ const PersonalNav = () => {
     try {
       await dispatch(fetchUserComments(userInfo.user!.token)).unwrap()
       setValueComment(false);
+      console.log("here")
     } catch(err) {
       console.log('there')
       setValueComment(true);
@@ -55,7 +54,7 @@ const PersonalNav = () => {
             <Separator className='mt-1'/>
             <div className='mt-3'>
                 <ol>
-                    <li className='mt-5 cursor-pointer' onClick={fetchQuestions}>Questions {valueQuestion ? <i className='font-bold text-red-600 text-sm'>No Questions</i> : ""}</li>
+                    <li className='mt-5 cursor-pointer' onClick={fetchQuestions}>Questions {valueQuestion ? <i className='font-bold text-red-600 text-sm'>You've Posted No Questions</i> : ""}</li>
                     <li className='mt-5 cursor-pointer' onClick={fetchComments}>Answers {valueComment ? <i className='font-bold text-red-600 text-xs'>You've made no Comments so far</i> : ""}</li>  
                 </ol>
             </div>
@@ -72,5 +71,3 @@ const PersonalNav = () => {
     </Fragment>
   )
 }
-
-export default PersonalNav

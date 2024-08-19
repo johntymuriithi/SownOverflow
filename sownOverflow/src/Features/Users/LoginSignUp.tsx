@@ -37,6 +37,9 @@ export default function LoginSignUp() {
 
    } catch (err) {
     console.log(err) // for now only
+    alert("Incorrect Email or Password, Try again!!")
+    e.currentTarget.elements.emailLogin.value = ""
+    e.currentTarget.elements.passWord.value = ""
     setPostStatus('failed')
    } finally {
     setPostStatus('idles')

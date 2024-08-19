@@ -29,6 +29,11 @@ export const fetchByCategory = createAppAsyncThunk(
     'question/fetchByCategory', 
     async(categoryName: string): Promise<Question[]> => {
         const response = await fetch(`api/show/questions/byCategory?categoryname=${categoryName}`)
+         // Check if the response status is not OK (not 2xx)
+         if (!response.ok) {
+            // Throw an error, which will trigger the `rejected` case
+            throw new Error(`Failed to fetch user comments: ${response.statusText}`);
+        }
         const data = await response.json();
         return data.questions
 })
@@ -41,6 +46,12 @@ export const fetchUserQuestions = createAppAsyncThunk(
               'Authorization': `Bearer ${token}`
             },
         })
+
+         // Check if the response status is not OK (not 2xx)
+         if (!response.ok) {
+            // Throw an error, which will trigger the `rejected` case
+            throw new Error(`Failed to fetch user comments: ${response.statusText}`);
+        }
         const data = await response.json();
         return data.questions
 })
@@ -52,10 +63,20 @@ export const fetchUserComments = createAppAsyncThunk(
             headers: {
               'Authorization': `Bearer ${token}`
             },
-        })
+        });
+
+        // Check if the response status is not OK (not 2xx)
+        if (!response.ok) {
+            // Throw an error, which will trigger the `rejected` case
+            throw new Error(`Failed to fetch user comments: ${response.statusText}`);
+        }
+
+        // Parse the response as JSON
         const data = await response.json();
-        return data.questions
-})
+        return data.questions;
+    }
+);
+
 
 export const postAnswer = createAppAsyncThunk(
     'question/postAnswer', 

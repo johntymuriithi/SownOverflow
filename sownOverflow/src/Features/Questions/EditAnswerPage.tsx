@@ -1,6 +1,6 @@
 import { ControlProps } from '@/Types/answersTypes'
 import { Editor } from '@tinymce/tinymce-react'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 
 interface Props {
     controlProps: ControlProps

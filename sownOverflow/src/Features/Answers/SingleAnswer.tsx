@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { FaUserTie } from 'react-icons/fa'
-import { AiFillLike } from "react-icons/ai";
 import EditModal from './EditModal';
 import { AnswerProps } from '@/Types/questionsTypes';
 import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
@@ -49,7 +48,6 @@ const SingleAnswer: React.FC<AnswerProps> = ({answers}) => {
                 </h1>
             </div>
             <div className='flex items-center mt-2 gap-6'>
-                <button><AiFillLike /></button>
                 {answer.user.id === userInfo.user?.id ? <EditModal answerInfo={{id: answer.id, content: answer.content}}/> : ""}
                 {answer.user.id === userInfo.user?.id ? <button className='border border-red-300 rounded'
                 onClick={() => {

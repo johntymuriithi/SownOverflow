@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react'
 import { FaUserTie } from "react-icons/fa";
-import { LiaEye } from "react-icons/lia";
 import { GiConversation } from "react-icons/gi";
 import { BiUpvote } from "react-icons/bi";
-import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
+import { useAppSelector } from '@/Types/hooksTypes';
 import { getAllQuestions } from './questionsSlice';
 import { Link } from 'react-router-dom';
 
@@ -34,7 +33,6 @@ const SinglePostLayout = () => {
                     <button className='bg-indigo-400 px-4 py-2 rounded-lg md:text-sm text-xs'>Programming</button>
                 </div>
                 <div className='flex items-center gap-5 text-sm'>
-                    <div className='flex items-center'><LiaEye /><span>20</span></div>
                     <div className='flex items-center'><GiConversation /><span>0</span></div>
                     <div className='flex items-center'><BiUpvote /><span>0</span></div>
                 </div>
