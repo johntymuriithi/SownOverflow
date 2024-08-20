@@ -1,31 +1,3 @@
-// import React, { Fragment } from 'react'
-
-// const HintModal = () => {
-//   return (
-//    <Fragment>
-//     <div className='border border-indigo-600 p-4 rounded-lg'>
-//                 <div className='mb-3'>
-//                     <h1 className='font-bold font-sans'>Writing a good question</h1>
-//                     <h3 className='mt-3 font-serif'>
-//                         You’re ready to <span className='text-green-600'>ask</span> a <span className='text-green-600'>farming-related question</span> and this
-//                         form will help guide you through the process.
-//                     </h3>
-//                 </div>
-//                 <div>
-//                     <h1 className='font-medium'>Steps:</h1>
-//                     <ol className='list-disc mx-8 font-serif'>
-//                         <li>Summarize your problem in a one-line title.</li>
-//                         <li>Add <span className='text-green-600'>"category"</span>which help surface your question to members of the community.</li>
-//                         <li>Describe your problem in more detail.</li>
-//                         <li>Review your question and post it to the site.</li>
-//                     </ol>
-//                 </div>
-//             </div>
-//    </Fragment>
-//   )
-// }
-
-// export default HintModal
 import {
   Dialog,
   DialogContent,
