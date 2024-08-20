@@ -44,7 +44,7 @@ const QuestionPage = () => {
     e.preventDefault()
 
     const data = {token: token!, q_title: title, q_description: text,
-        category_id: findCategory(value1), q_date: "1 months ago"}
+        category_id: findCategory(value1), q_date: new Date().toISOString()}
 
     try {
       await dispatch(postQuestion(data)).unwrap()

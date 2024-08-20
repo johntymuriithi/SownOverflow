@@ -5,7 +5,8 @@ import { AnswerProps } from '@/Types/questionsTypes';
 import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
 import { getUserInfo } from '../Users/usersSlice';
 import { useNavigate } from 'react-router-dom';
-import { deleteAnswer, getQuestions } from '../Questions/questionsSlice';
+import { deleteAnswer } from '../Questions/questionsSlice';
+import { TimeAgo } from '@/Components/TimeAgo';
 
 const SingleAnswer: React.FC<AnswerProps> = ({answers}) => {
     const userInfo = useAppSelector(getUserInfo)
@@ -25,6 +26,7 @@ const SingleAnswer: React.FC<AnswerProps> = ({answers}) => {
           console.log(err)
         }
        }
+
   return (
     <Fragment>
         {answers.map((answer) => (
@@ -33,7 +35,8 @@ const SingleAnswer: React.FC<AnswerProps> = ({answers}) => {
                 <div className='flex items-center gap-2'>
                     <FaUserTie className='md:text-[30px] text-[20px]' />
                     <h1 className="text-xs md:text-sm font-semibold">{answer.user.username}</h1>
-                    <button className='flex bg-indigo-300 rounded-lg px-1 md:text-sm text-xs' disabled>{answer.dataAnswered}</button>
+                    <button className='flex bg-indigo-300 rounded-lg px-1 md:text-sm text-xs' 
+                    disabled><span><TimeAgo timestamp={answer.dateAnswered} /></span></button>
                 </div>
                 {
                     answer.user.level === 'expert' ?

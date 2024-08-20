@@ -12,6 +12,7 @@ import { fetchByCategory, getQuestionById,} from './questionsSlice'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../Users/usersSlice'
 import { getCategories } from '../Categories/categoriesSlice'
+import { TimeAgo } from '@/Components/TimeAgo'
 
 const SinglePostMain = () => {
     const { id } = useParams();
@@ -111,7 +112,7 @@ const SinglePostMain = () => {
               <div className='mb-4'>
                   <h1 className='font-bold md:text-xl'>{data.title}</h1>
               </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-              <div className='md:flex justify-between items-center'>
+              <div className='flex justify-between items-center'>
                   <div className='flex items-center gap-2'>
                       <div>
                           <FaUserTie className='text-[30px]' />
@@ -132,10 +133,10 @@ const SinglePostMain = () => {
               </div>
   
               <div className='mt-3'>
-                  <button className='bg-slate-400 w-full text-justify p-2 rounded-lg text-xs'><span className='pr-2 text-xs'>Asked:</span>{data.dateAsked}</button>
+                  <button className='bg-slate-400 w-full text-justify p-2 rounded-lg text-xs'><span className='pr-2 text-xs'>Asked:</span><TimeAgo timestamp={data.dateAsked} /></button>
               </div>
   
-              <hr className='border border-green-300 mt-7'/>
+              <hr className='border border-slate-300 mt-7'/>
               <div className='mt-3 text-[14px] md:text-[17px]'>
                  {data.content}
               </div>
@@ -152,7 +153,7 @@ const SinglePostMain = () => {
               <div className='mt-3'>
                   <h1 className='text-3xl italic font-extralight text-indigo-400'>{count === 1 ? `${count} ANSWER` : `${count} ANSWERS`}</h1>
               </div>
-              <hr className='border border-green-300 mt-3'/>
+              <hr className='border border-slate-300 mt-3'/>
               <div className='md:p-4 mt-3'>
                   {/* Answers Here */}
                    <SingleAnswer answers={answers}/>

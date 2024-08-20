@@ -5,13 +5,15 @@ import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
 import { fetchByCategory, getAllQuestions } from './questionsSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCategories } from '../Categories/categoriesSlice';
+import { TimeAgo } from '@/Components/TimeAgo';
 
 export const SinglePostLayout = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-    const data = useAppSelector(getAllQuestions)
+    const posts = useAppSelector(getAllQuestions)
     const categories = useAppSelector(getCategories).categories
 
+    const data = posts.slice().sort((a, b) => b.dateAsked.localeCompare(a.dateAsked))
     const handleCategory = (id: number): string => {
         const category = categories.find(category => category.category_id === id)
         return category?.category_name || "";
@@ -36,7 +38,7 @@ export const SinglePostLayout = () => {
                 </div>
                 <div>
                     <h2 className='font-bold text-sm'>{question.user.username}</h2>
-                    <p className='text-sm'>{question.dateAsked}</p>
+                    <p className='text-sm'><TimeAgo timestamp={question.dateAsked} /></p>
                 </div>
             </div>
             <div className='block md:mt-5 mt-2'>

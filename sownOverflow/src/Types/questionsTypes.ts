@@ -7,7 +7,7 @@ interface Answer {
     id: number,
     content: string,
     votes: number,
-    dataAnswered: string,
+    dateAnswered: string,
     user: User
 }
 export interface AnswerProps {

@@ -12,7 +12,7 @@ import React, { useState } from 'react'
 import { AnswerModalProps } from "@/Types/answersTypes"
 import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
 import { getUserInfo } from "../Users/usersSlice"
-import { getQuestions, postAnswer } from "../Questions/questionsSlice"
+import { postAnswer } from "../Questions/questionsSlice"
 import { useNavigate } from "react-router-dom"
   
 
@@ -36,7 +36,7 @@ interface Props {
    const handlePost = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const data = {token: token!, q_id: questionInfo.questionInfo.id, a_description: text, a_date: "1 day Ago"}
+    const data = {token: token!, q_id: questionInfo.questionInfo.id, a_description: text, a_date: new Date().toISOString()}
 
     try {
       await dispatch(postAnswer(data)).unwrap()

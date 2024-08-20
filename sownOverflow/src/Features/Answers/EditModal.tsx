@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
 import { useNavigate} from "react-router-dom"
 import { useState } from "react"
 import { getUserInfo } from "../Users/usersSlice"
-import { editAnswer, getQuestions } from "../Questions/questionsSlice"
+import { editAnswer } from "../Questions/questionsSlice"
 
 interface Props {
   answerInfo: AnswerModalProps
