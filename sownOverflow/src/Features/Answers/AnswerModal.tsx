@@ -41,12 +41,7 @@ interface Props {
     try {
       await dispatch(postAnswer(data)).unwrap()
       alert("Answer Submitted, Go Home and Refresh, then comeback")
-      try {
-        await dispatch(getQuestions()).unwrap()
-        navigate('/')
-      } catch(error) {
-        console.log(error)
-      }
+      navigate('/')
     } catch(err) {
       console.log(err)
     }

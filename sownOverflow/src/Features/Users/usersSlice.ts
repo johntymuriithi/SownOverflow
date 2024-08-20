@@ -36,11 +36,18 @@ export const loginUser = createAppAsyncThunk('user/loginUser', async (data: Logi
 });
 
 export const signUser = createAppAsyncThunk('user/signUser', async (data: SignUp) => {
-    await fetch('api/user/signUp', {
+    const response = await fetch('api/user/signup', {
         method: 'POST',
         headers,
         body: JSON.stringify(data),
     });
+
+    if (!response.ok) {
+        throw new Error('Failed to SignUp');
+    }
+
+    const info = await response.json()
+    return info.data
 });
 
 const usersSlice = createSlice({

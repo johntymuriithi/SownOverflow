@@ -12,6 +12,7 @@ export interface Logins {
 
 export interface SignUp {
     email: string,
+    username: string,
     password: string
     level: string
 }
@@ -28,8 +29,10 @@ export interface LoginFormElements extends HTMLFormElement {
 
 interface SignUpFormFields extends HTMLFormControlsCollection {
     emailSignup: HTMLInputElement,
+    username: HTMLInputElement,
     confirmPassword: HTMLInputElement,
     formRadio: HTMLInputElement
+
 }
 
 export interface SignUpFormElements extends HTMLFormElement {

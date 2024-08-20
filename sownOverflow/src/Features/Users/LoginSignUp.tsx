@@ -5,6 +5,7 @@ import {  loginUser, signUser } from './usersSlice';
 import { LoginFormElements, SignUpFormElements } from '@/Types/usersTypes';
 import { useAppDispatch,} from '@/Types/hooksTypes';
 import { useNavigate } from 'react-router-dom';
+import { CiUser } from "react-icons/ci";
 
 export default function LoginSignUp() {
   const dispatch = useAppDispatch()
@@ -49,19 +50,19 @@ export default function LoginSignUp() {
   const handleSignup = async (e: FormEvent<SignUpFormElements>) => {
     e.preventDefault();
 
-    e.preventDefault();
     const email = e.currentTarget.elements.emailSignup.value
     const password = e.currentTarget.elements.confirmPassword.value
-    const level = e.currentTarget.elements.formRadio.value
+    const level = userType
+    const username = e.currentTarget.elements.username.value
 
    try {
     setPostStatus('pending')
-    await dispatch(signUser({email, password, level})).unwrap()
-    console.log(postStatus)
+    await dispatch(signUser({email, password, level, username})).unwrap()
+    alert("User Signed Successfully")
     navigate('/')
-    e.currentTarget.reset()
 
    } catch (err) {
+    console.log(err)
     setPostStatus('failed')
    } finally {
     setPostStatus('idles')
@@ -98,13 +99,13 @@ export default function LoginSignUp() {
 
           {isLogin ? (
             <form onSubmit={handleLogin}  className={`transition duration-900 ${isLogin ? 'opacity-100' : 'opacity-0'}`}>
-              <div className="px-6 sm:px-0 max-w-sm">
+              {/* <div className="px-6 sm:px-0 max-w-sm">
               <button type="button" className="text-white w-full bg-[#4285F4] hover:bg-blue-800 transition focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2">
                 <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
                 Sign in with Google
                 <div></div>
               </button>
-              </div>
+              </div> */}
 
               <div className="flex items-center my-6">
                 <span className="flex-grow bg-gray-300 rounded h-0.5"></span>
@@ -187,6 +188,13 @@ export default function LoginSignUp() {
                   </svg>
                 </div>
                 <input type="email" id="emailSignup" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="name@example.com" aria-label="Email address" />
+              </div>
+
+              <div className="mb-4 relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <CiUser />
+                </div>
+                <input type="text" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="John Doe" aria-label="user name" />
               </div>
 
               <div className="mb-4 relative">
