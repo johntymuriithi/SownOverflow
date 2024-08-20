@@ -13,13 +13,13 @@ import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
 import { useNavigate} from "react-router-dom"
 import { useState } from "react"
 import { getUserInfo } from "../Users/usersSlice"
-import { editAnswer } from "../Questions/questionsSlice"
+import { editAnswer, getQuestions } from "../Questions/questionsSlice"
 
 interface Props {
   answerInfo: AnswerModalProps
 }
   
-  const  EditModal: React.FC<Props> = ({answerInfo}) => {
+export const  EditModal: React.FC<Props> = ({answerInfo}) => {
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -42,7 +42,7 @@ interface Props {
 
     try {
       await dispatch(editAnswer(data)).unwrap()
-      alert("Answer Edited, Go Home and Refresh, then comeback")
+      alert("Answer Edited, Go Home, then comeback")
       navigate('/')
     } catch(err) {
       console.log(err)
@@ -75,5 +75,3 @@ interface Props {
       </Dialog>
     )
   }
-  
-  export default EditModal

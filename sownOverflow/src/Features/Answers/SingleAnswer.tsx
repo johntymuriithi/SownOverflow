@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 import { FaUserTie } from 'react-icons/fa'
-import EditModal from './EditModal';
+import { EditModal } from './EditModal';
 import { AnswerProps } from '@/Types/questionsTypes';
 import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
 import { getUserInfo } from '../Users/usersSlice';
 import { useNavigate } from 'react-router-dom';
-import { deleteAnswer } from '../Questions/questionsSlice';
+import { deleteAnswer, getQuestions } from '../Questions/questionsSlice';
 
 const SingleAnswer: React.FC<AnswerProps> = ({answers}) => {
     const userInfo = useAppSelector(getUserInfo)
@@ -19,7 +19,7 @@ const SingleAnswer: React.FC<AnswerProps> = ({answers}) => {
     
         try {
           await dispatch(deleteAnswer(data)).unwrap()
-          alert("Answer Deleted, Go Home and Refresh, then comeback")
+          alert("Answer Deleted, Go Home, then comeback")
           navigate('/')
         } catch(err) {
           console.log(err)

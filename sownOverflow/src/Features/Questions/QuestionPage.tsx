@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import HintModal  from '../../Components/HintModal'
 import QuestionArea from './QuestionArea'
 import { PiPersonSimpleThrowBold } from "react-icons/pi";
-import { postQuestion } from './questionsSlice'
+import { getQuestions, modalController, postQuestion } from './questionsSlice'
 import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes'
 import { getUserInfo } from '../Users/usersSlice'
 import { useNavigate } from 'react-router-dom'
@@ -48,8 +48,14 @@ const QuestionPage = () => {
 
     try {
       await dispatch(postQuestion(data)).unwrap()
-      alert("Question Submitted, Go Home and Refresh, then comeback")
-      navigate('/')
+      alert("Question Submitted")
+      try {
+        await dispatch(getQuestions()).unwrap()
+        dispatch(modalController())
+        navigate('/')
+      } catch(error) {
+        console.log(error)
+      }
     } catch(err) {
       console.log(err)
     }

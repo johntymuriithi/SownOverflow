@@ -88,9 +88,6 @@ const SinglePostMain = () => {
                     </button>
                     <EditAnswerModal />
                 </div>
-                <div className='md:p-2 px-1 md:mt-3 mt-1'>
-                    <p className='border border-t-indigo-700 border-b-indigo-700 transition ease-in'>2</p>
-                </div>
                 </div>
                 <hr className='border border-green-300 mt-3'/>
     
@@ -148,9 +145,6 @@ const SinglePostMain = () => {
                 <div className='md:mt-3 mt-1 flex gap-2'>
                     <AnswerModal questionInfo={{id: data.id, content: data.content}}/>
                     {data.user.id === userInfo.user?.id ? <EditAnswerModal questionInfo={{id: data.id, content: data.content}}/> : ""}
-                </div>
-                <div className='md:p-2 px-1 md:mt-3 mt-1'>
-                    <p className='border border-t-indigo-700 border-b-indigo-700 transition ease-in'>2</p>
                 </div>
                 </div> : ""}
               <hr className='border border-green-300 mt-3'/>

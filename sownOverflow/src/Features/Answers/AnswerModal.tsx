@@ -12,7 +12,7 @@ import React, { useState } from 'react'
 import { AnswerModalProps } from "@/Types/answersTypes"
 import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
 import { getUserInfo } from "../Users/usersSlice"
-import { postAnswer } from "../Questions/questionsSlice"
+import { getQuestions, postAnswer } from "../Questions/questionsSlice"
 import { useNavigate } from "react-router-dom"
   
 
@@ -41,7 +41,12 @@ interface Props {
     try {
       await dispatch(postAnswer(data)).unwrap()
       alert("Answer Submitted, Go Home and Refresh, then comeback")
-      navigate('/')
+      try {
+        await dispatch(getQuestions()).unwrap()
+        navigate('/')
+      } catch(error) {
+        console.log(error)
+      }
     } catch(err) {
       console.log(err)
     }

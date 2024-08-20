@@ -3,10 +3,11 @@ import { FaUserTie } from "react-icons/fa";
 import { GiConversation } from "react-icons/gi";
 import { useAppDispatch, useAppSelector } from '@/Types/hooksTypes';
 import { fetchByCategory, getAllQuestions } from './questionsSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getCategories } from '../Categories/categoriesSlice';
 
-const SinglePostLayout = () => {
+export const SinglePostLayout = () => {
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const data = useAppSelector(getAllQuestions)
     const categories = useAppSelector(getCategories).categories
@@ -16,9 +17,14 @@ const SinglePostLayout = () => {
         return category?.category_name || "";
     }
 
-    const handlePost = (value: string) => {
+    const handlePost = async (value: string) => {
 
-        dispatch(fetchByCategory(value))
+        try {
+            await dispatch(fetchByCategory(value)).unwrap()
+            navigate('/')
+        } catch(error) {
+            navigate('/')
+        }
     }
   return (
     <Fragment>
@@ -53,5 +59,3 @@ const SinglePostLayout = () => {
     </Fragment>
   )
 }
-
-export default SinglePostLayout

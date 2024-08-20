@@ -13,7 +13,7 @@ import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/Types/hooksTypes"
 import { getUserInfo } from "../Users/usersSlice"
 import { useNavigate } from "react-router-dom"
-import { editQuestion } from "./questionsSlice"
+import { editQuestion, getQuestions } from "./questionsSlice"
 
 interface Props {
   questionInfo: QuestionModalProps
@@ -42,7 +42,7 @@ interface Props {
 
     try {
       await dispatch(editQuestion(data)).unwrap()
-      alert("Question Edited, Go Home and Refresh, then comeback")
+      alert("Question Edited, Go Home, then comeback")
       navigate('/')
     } catch(err) {
       console.log(err)
